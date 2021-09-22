@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Article } from '../article/article.entity';
-import { Repository } from 'typeorm';
 import { Comment } from './comment.entity';
+import {CommentRepository} from "./comment.repository";
 
 @Injectable()
 export class CommentsService {
   constructor(
     @InjectRepository(Comment)
-    private commentsRepository: Repository<Comment>,
+    private commentsRepository: CommentRepository,
   ) {}
 
   findAll(postId): Promise<Comment[]> {

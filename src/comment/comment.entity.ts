@@ -9,7 +9,7 @@ export class Comment extends BaseEntity {
   postId: number;
 
   @Column({ default: 0 })
-  commentId: number;
+  parentCommentId: number;
 
   @Column()
   name: string;

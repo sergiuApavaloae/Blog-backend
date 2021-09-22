@@ -23,20 +23,20 @@ export class CommentController {
     return await this.commentsService.findOne(id);
   }
 
-  @Get()
-  async getAll(@Param('postId') postId: string) {
-    return await this.commentsService.findAll(postId);
-  }
+  // @Get()
+  // async getAll(@Param('postId') postId: string) {
+  //   return await this.commentsService.findAll(postId);
+  // }
+  //
+  // @Post()
+  // async addComment(@Body() comment: Comment) {
+  //   return await this.commentsService.addComment(comment);
+  // }
 
-  @Post()
-  async addArticle(@Body() comment: Comment) {
-    return await this.commentsService.addComment(comment);
-  }
-
-  @Delete('/:id')
-  async deleteComment(@Param('id') id: string) {
-    await this.commentsService.remove(id);
-  }
+  // @Delete('/:id')
+  // async deleteComment(@Param('id') id: string) {
+  //   await this.commentsService.remove(id);
+  // }
 
   @Put()
   async updateComment(@Body() comment: Comment) {

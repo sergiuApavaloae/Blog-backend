@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-
 import { Article } from './article.entity';
+import {ArticleRepository} from "./article.repository";
 
 @Injectable()
 export class ArticlesService {
   constructor(
     @InjectRepository(Article)
-    private articlesRepository: Repository<Article>,
+    private articlesRepository: ArticleRepository,
   ) {}
 
   findAll(): Promise<Article[]> {
@@ -24,13 +23,13 @@ export class ArticlesService {
   }
 
   async addArticle(article: Article) {
-    article.createdAt = new Date().toUTCString().slice(5, 16);
+   // article.createdAt = new Date().toUTCString();
     return await this.articlesRepository.save(article);
   }
   async updateArticle(article: Article) {
     const found: Article = await this.articlesRepository.findOne(article.id);
     if (found) {
-      article.updatedAt = new Date().toUTCString().slice(5, 16);
+     // article.updatedAt = new Date().toUTCString();
       return await this.articlesRepository.save(article);
     } else return;
   }
